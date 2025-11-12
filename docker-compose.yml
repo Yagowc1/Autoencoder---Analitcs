@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  jupyter:
+    image: jupyter/tensorflow-notebook
+    # container_name: jupyter_gpu
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/home/jovyan/work
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+
+
